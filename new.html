@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Absolute Modal Example</title>
+<style>
+  .card {
+    position: relative; /* Parent relative */
+    width: 300px;
+    height: 200px;
+    background-color: lightblue;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  .modal {
+    position: absolute; /* Absolute relative to parent */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card" onclick="showModal(this)">
+  Click Me to Open Modal
+  <div class="modal" style="display: none;">
+    <span class="close-btn" onclick="closeModal(event, this)">×</span>
+    Modal on Card
+  </div>
+</div>
+
+<script>
+  function showModal(card) {
+    const modal = card.querySelector('.modal');
+    modal.style.display = 'flex';
+  }
+
+  function closeModal(e, modal) {
+    e.stopPropagation(); // Prevent card click
+    modal.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
